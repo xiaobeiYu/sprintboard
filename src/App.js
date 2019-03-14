@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import './App.css';
+import CheckboxListSecondary from './checkBoxList';
 
 class App extends Component {
   constructor(props) {
@@ -23,29 +24,26 @@ class App extends Component {
         doing: [...state.doing, state.todo[index]]
       };
     });
-    console.log(this.state);
   }
 
   render() {
     return (
-      <div className="App" style={{margin: 100}}>
-       <Grid container spacing={24}>
-        <Grid item xs={4}>
-          <Paper>
-            <h1>ToDo</h1>
-            <ul>
-              {this.state.todo.map((i, index) => <li><a href="#">{i.title}</a><button onClick={()=>this.moveItem(index)} /></li>)}
-            </ul>
-          </Paper>
+      <div className="App" style={{margin: 30}}>
+        <Grid container spacing={24}>
+          <Grid item xs={4}>
+            <Paper>
+              <CheckboxListSecondary
+                itemList={this.state.todo.map(item => <a href='#'>{item.title}</a>)}
+              />
+            </Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>xs=6</Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper>xs=6</Paper>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Paper>xs=6</Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper>xs=6</Paper>
-        </Grid>
-      </Grid>
-  
       </div>
     );
   }
